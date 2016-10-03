@@ -1,0 +1,80 @@
+<aura:component controller="EmailUnsubRelatedListController" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
+	<aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="historyRecords" type="ContactHistory[]"/>  <!-- Registers Data Type Expense__c -->
+
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    
+    
+               <!-- table-->
+        <article class="slds-card">
+  <div class="slds-card__header slds-grid">
+    <header class="slds-media slds-media--center slds-has-flexi-truncate">
+      <div class="slds-media__figure">
+        
+      </div>
+      <div class="slds-media__body slds-truncate">
+        <h2>
+          <a href="javascript:void(0);" class="slds-text-link--reset">
+            <span class="slds-text-heading--small">Field History (1)</span>
+          </a>
+        </h2>
+      </div>
+    </header>
+    <div class="slds-no-flex">
+      
+    </div>
+  </div>
+  <div class="slds-card__body">
+    <table class="slds-table slds-table--bordered slds-no-row-hover slds-table--cell-buffer">
+      <thead>
+        <tr class="slds-text-title--caps">
+          <th scope="col">
+            <div class="slds-truncate" title="Field">Field</div>
+          </th>
+          <th scope="col">
+            <div class="slds-truncate" title="CreatedDate">Created Date</div>
+          </th>
+          <th scope="col">
+            <div class="slds-truncate" title="NewValue">New Value</div>
+          </th>
+          <th scope="col">
+            <div class="slds-truncate" title="OldValue">Old Value</div>
+          </th>
+        </tr>
+      </thead>
+      
+      <aura:iteration items="{!v.historyRecords}" var="historyRecord">  
+        <tbody>
+        <tr class="slds-hint-parent">
+          <th scope="row">
+            <div class="slds-truncate" title="Field">
+                <ui:outputText value="{!historyRecord.Field}"/>
+            </div>
+          </th>
+          <td>
+            <div class="slds-truncate" title="CreatedDate">
+                <ui:outputDateTime value="{!historyRecord.CreatedDate}"/></div>
+          </td>
+          <td>
+            <div class="slds-truncate" title="NewValue">
+                <ui:outputText value="{!historyRecord.NewValue}"/></div>
+          </td>
+          <td>
+            <div class="slds-truncate" title="OldValue">
+                <ui:outputText value="{!historyRecord.OldValue}"/></div>
+          </td>
+        </tr>
+      </tbody>
+    </aura:iteration>  
+        
+    </table>
+  </div>
+  <div class="slds-card__footer"><a href="javascript:void(0);">View All <span class="slds-assistive-text">entity type</span></a></div>
+</article>
+        <!-- table-->     
+        		
+        
+                
+    				
+	
+</aura:component>
